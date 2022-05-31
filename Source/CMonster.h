@@ -1,5 +1,4 @@
-// #pragma once
-//template functions HAVE to be implemented in the header.
+#pragma once
 template <class T, class C, class E, class F>
 class CMonster{
 
@@ -10,7 +9,7 @@ private:
     F Size;
 
 public:
-    static int monsterCount;
+    //static int iMonsterCount;
     
     T getName() const { return Name; }
     void setName(T name) { Name = name; }
