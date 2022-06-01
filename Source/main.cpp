@@ -117,14 +117,20 @@ void createMonster(){
     cout << endl;
 
     
-
+    //Adding gamification
     cout << "1 ";
     Sleep(1000);
     cout << "2 ";
     Sleep(1000);
-    cout << "3... ";
-    Sleep(1000);
-    cout << "Puff! Monster created" << endl;
+    cout << "3";
+    Sleep(500);
+    cout << ".";
+    Sleep(500);
+    cout << ".";
+    Sleep(500);
+    cout << ". ";
+    Sleep(500);
+    cout << "Puff! Monster created!" << endl;
     CMonster<string, int, int, double> monster1(monstersName, monstersAge, monstersHealth, monstersSize);
     //monster1.setName(string &monstersname);
     cout << monster1.getName();
