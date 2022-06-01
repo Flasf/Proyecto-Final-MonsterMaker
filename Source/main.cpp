@@ -17,17 +17,24 @@ The game should have somewhere:
 */
 
 #include <iostream>
-
-//Librerías para el random number generator
 #include <cstdlib> //srand y rand
 #include <ctime> //time
 #include <Windows.h> //delay
+#include <string>
+#include <sstream>
+
+#include "CMonster.h"
 
 using std::cin; using std::cout;
 using std::endl; using std::string;
 
+//int CMonster<C>::iMonsterCount = 0;
+
 void play();
 void saveGame();
+void createMonster();
+void openMonster();
+void createMonster();
 
 int main()
 {
@@ -68,8 +75,68 @@ int main()
 void play()
 {
     cout << "You're playing" << endl;
+    createMonster();
 }
 
 void saveGame(){
-
+//file stuff
 }
+
+void openMonster(){
+//you have these monsters: bla bla bla (names) selecte which one...
+}
+
+void saveMonster(){/*call saveGame maybe*/}
+
+void loadMonster(){/*see monster's info*/}
+
+void createMonster(){
+    string monstersName;
+    int monstersAge;
+    int monstersHealth;
+    double monstersSize;
+    bool areMonstersCreated[] = {false, false};
+
+    cout << "You have 2 monsters, how would you like to name the first one?: ";
+    cin.ignore(); //If not, getline doesn't wait for input
+    cin.clear();
+    cin.sync();
+    std::getline(std::cin, monstersName);
+    cout << endl;
+
+    cout << "Monster's age?: ";
+    cin >> monstersAge;
+    cout << endl;
+
+    cout << "Monster's health?: ";
+    cin >> monstersHealth;
+    cout << endl;
+
+    cout << "Monster's size?: ";
+    cin >> monstersSize;
+    cout << endl;
+
+    
+
+    cout << "1 ";
+    Sleep(1000);
+    cout << "2 ";
+    Sleep(1000);
+    cout << "3... ";
+    Sleep(1000);
+    cout << "Puff! Monster created" << endl;
+    CMonster<string, int, int, double> monster1(monstersName, monstersAge, monstersHealth, monstersSize);
+    //monster1.setName(string &monstersname);
+    cout << monster1.getName();
+    // cin >> newName;
+    // setName(newName);
+}
+
+void combineMonster(){
+
+    // CMonster Operator+(const CMonster& left, const CMonster& right){
+    //     return left.
+    // }
+}
+
+int exit() { return 0; }
