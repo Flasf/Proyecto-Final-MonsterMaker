@@ -55,6 +55,7 @@ int main()
     cout << "Write a number\n";
     cin >> choice;
     cout << choice << endl;
+    CMonster<string, int, int, double> monsterDePrueba("none", 1, 1, 1);
     //menu
     do
     {
@@ -98,11 +99,18 @@ void createMonster(){
     string monstersName;
     int monstersAge;
     int monstersHealth;
+    int timesCreateMonsterHasBeenUsed;
     double monstersSize;
-    bool areMonstersCreated[] = {false, false};
+    bool isMonster1Created;
+    bool isMonster2Created;
     char choice;
+    CMonster<string, int, int, double> monster1(monstersName, monstersAge, monstersHealth, monstersSize);
+    CMonster<string, int, int, double> monster2(monstersName, monstersAge, monstersHealth, monstersSize);
 
-    cout << "You have 2 monsters, how would you like to name the first one?: ";
+    timesCreateMonsterHasBeenUsed = 0;
+
+    cout << "You can create 2 monsters, how would you like to name the first one?: ";
+    
     cin.ignore(); //If not, getline doesn't wait for input
     cin.clear();
     cin.sync();
@@ -122,13 +130,47 @@ void createMonster(){
     cout << endl;
 
     
-    //Adding gamification
+    //Adding gamification (the loading function)
     loading();
-    cout << "\nPuff! Monster created!" << endl;
-    CMonster<string, int, int, double> monster1(monstersName, monstersAge, monstersHealth, monstersSize);
-    
-    cout << monster1.getName() << endl;
 
+    Sleep(1000);
+    cout << "First Monster created!" << endl;
+    monster1.setHealth(monstersHealth);
+    monster1.setName(monstersName);
+    monster1.setAge(monstersAge);
+    monster1.setSize(monstersSize);
+
+    cout<< monster1.getName() << endl;
+    
+    cout << "You can create 2 monsters, how would you like to name the second one?: ";
+    cin.ignore(); // If not, getline doesn't wait for input
+    cin.clear();
+    cin.sync();
+    std::getline(std::cin, monstersName);
+    cout << endl;
+
+    cout << "Monster's age?: ";
+    cin >> monstersAge;
+    cout << endl;
+
+    cout << "Monster's health?: ";
+    cin >> monstersHealth;
+    cout << endl;
+
+    cout << "Monster's size?: ";
+    cin >> monstersSize;
+    cout << endl;
+
+    loading();
+    Sleep(1000);
+    cout << "Second Monster created!" << endl;
+    monster2.setHealth(monstersHealth);
+    monster2.setName(monstersName);
+    monster2.setAge(monstersAge);
+    monster2.setSize(monstersSize);
+
+    cout << monster2.getName() << endl;
+    
     cout << "Would you like to combine your monsters? (choose a number)\n\t1. Yes \n\t2. No" << endl;
     cin >> choice;
     if (choice == 1) {
@@ -142,6 +184,7 @@ void createMonster(){
     else if (choice == 2) {
         cout<< "ok then" << endl;
     }
+    
 }
 
 void combineMonster(){
@@ -163,5 +206,6 @@ void loading(){
     Sleep(500);
     cout << ". ";
     Sleep(500);
+    cout << "\nPuff! ";
 }
 int exit() { return 0; }
