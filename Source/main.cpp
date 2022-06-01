@@ -35,6 +35,7 @@ void saveGame();
 void createMonster();
 void openMonster();
 void createMonster();
+void loading();
 
 int main()
 {
@@ -52,7 +53,7 @@ int main()
     cout << "Write a number\n";
     cin >> choice;
     cout << choice << endl;
-
+    //menu
     do
     {
 
@@ -74,12 +75,13 @@ int main()
 
 void play()
 {
-    cout << "You're playing" << endl;
+    cout << "You're playing" << endl<<endl;
     createMonster();
 }
 
 void saveGame(){
 //file stuff
+    exit();
 }
 
 void openMonster(){
@@ -96,6 +98,7 @@ void createMonster(){
     int monstersHealth;
     double monstersSize;
     bool areMonstersCreated[] = {false, false};
+    char choice;
 
     cout << "You have 2 monsters, how would you like to name the first one?: ";
     cin.ignore(); //If not, getline doesn't wait for input
@@ -118,6 +121,34 @@ void createMonster(){
 
     
     //Adding gamification
+    loading();
+    cout << "\nPuff! Monster created!" << endl;
+    CMonster<string, int, int, double> monster1(monstersName, monstersAge, monstersHealth, monstersSize);
+    
+    cout << monster1.getName();
+    
+    cout<<"Would you like to combine your monsters? (choose a number)\n1. Yes \n2. No" << endl;
+    cin >> choice;
+    if (choice == 1) {
+        char choice2;
+        cout << "Would you like to save the game before combining?\n1. Yes \n2. No" << endl;
+        if(choice2 == 1){
+            saveGame();
+        }
+        combineMonster();
+    }
+    else if (choice == 2) {
+        cout;
+    }
+}
+
+void combineMonster(){
+
+    // CMonster Operator+(const CMonster& left, const CMonster& right){
+    //     return left.
+    // }
+}
+void loading(){
     cout << "1 ";
     Sleep(1000);
     cout << "2 ";
@@ -130,19 +161,5 @@ void createMonster(){
     Sleep(500);
     cout << ". ";
     Sleep(500);
-    cout << "Puff! Monster created!" << endl;
-    CMonster<string, int, int, double> monster1(monstersName, monstersAge, monstersHealth, monstersSize);
-    //monster1.setName(string &monstersname);
-    cout << monster1.getName();
-    // cin >> newName;
-    // setName(newName);
 }
-
-void combineMonster(){
-
-    // CMonster Operator+(const CMonster& left, const CMonster& right){
-    //     return left.
-    // }
-}
-
 int exit() { return 0; }
