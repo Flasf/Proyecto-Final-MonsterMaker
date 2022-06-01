@@ -1,4 +1,7 @@
-#pragma once
+//#pragma once
+#ifndef CMONSTER_H
+#define CMONSTER_H
+#include <iostream>
 template <class T, class C, class E, class F>
 
 class CMonster{
@@ -30,5 +33,10 @@ public:
         Age = age;
         Size = size;
     }
+    ~CMonster(){
+        std::cout << "Monster has been destroyed." << std::endl;
+    }
 
 };
+
+#endif // CMONSTER_H
