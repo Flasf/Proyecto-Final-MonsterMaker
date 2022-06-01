@@ -35,7 +35,9 @@ void saveGame();
 void createMonster();
 void openMonster();
 void createMonster();
+void combineMonster();
 void loading();
+void seeMonsterInfo();
 
 int main()
 {
@@ -81,7 +83,7 @@ void play()
 
 void saveGame(){
 //file stuff
-    exit();
+    exit(0);
 }
 
 void openMonster(){
@@ -90,7 +92,7 @@ void openMonster(){
 
 void saveMonster(){/*call saveGame maybe*/}
 
-void loadMonster(){/*see monster's info*/}
+void seeMonsterInfo(){/*see monster's info*/}
 
 void createMonster(){
     string monstersName;
@@ -125,25 +127,25 @@ void createMonster(){
     cout << "\nPuff! Monster created!" << endl;
     CMonster<string, int, int, double> monster1(monstersName, monstersAge, monstersHealth, monstersSize);
     
-    cout << monster1.getName();
-    
-    cout<<"Would you like to combine your monsters? (choose a number)\n1. Yes \n2. No" << endl;
+    cout << monster1.getName() << endl;
+
+    cout << "Would you like to combine your monsters? (choose a number)\n\t1. Yes \n\t2. No" << endl;
     cin >> choice;
     if (choice == 1) {
         char choice2;
-        cout << "Would you like to save the game before combining?\n1. Yes \n2. No" << endl;
+        cout << "Would you like to save the game before combining?\n\t1. Yes \n\t2. No" << endl;
         if(choice2 == 1){
             saveGame();
         }
         combineMonster();
     }
     else if (choice == 2) {
-        cout;
+        cout<< "ok then" << endl;
     }
 }
 
 void combineMonster(){
-
+    exit(0);
     // CMonster Operator+(const CMonster& left, const CMonster& right){
     //     return left.
     // }
