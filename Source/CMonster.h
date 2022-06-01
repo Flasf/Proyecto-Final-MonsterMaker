@@ -1,5 +1,6 @@
 #pragma once
 template <class T, class C, class E, class F>
+
 class CMonster{
 
 private:
@@ -10,7 +11,7 @@ private:
 
 public:
     //static int iMonsterCount;
-    
+    //int CMonster<T, C, E, F>::iMonsterCount;
     T getName() const { return Name; }
     void setName(T name) { Name = name; }
 
@@ -22,5 +23,12 @@ public:
 
     F getSize() const { return Size; }
     void setSize(F size) { Size = size; }
+    CMonster();
+    CMonster(const T name, const C health, const C age, const F size){
+        Name = name;
+        Health = health;
+        Age = age;
+        Size = size;
+    }
 
 };
