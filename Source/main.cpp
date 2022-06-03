@@ -180,10 +180,11 @@ void createMonster(){
         if(choice2 == 1){
             saveGame();
         }else{
+            /* using string = basic_string<char>; */
             cout << "Combining monsters..." << endl;
             CMonster<string, int, int, double> operator+(const CMonster<string, int, int, double> &leftMonster, const CMonster<string, int, int, double> &rightMonster);
-            CMonster<string, int, int, double> CombinedMonster;
-            CombinedMonster = monster1 + monster2;
+            //CMonster<string, int, int, double> CombinedMonster;
+            CMonster<string, int, int, double> CombinedMonster = monster1 + monster2;
             cout << CombinedMonster.getName() << endl;
             cout << CombinedMonster.getAge() << endl;
             cout << CombinedMonster.getHealth() << endl;
