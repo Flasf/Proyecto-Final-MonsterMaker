@@ -23,6 +23,7 @@ The game should have somewhere:
 #include <string>
 #include <sstream>
 #include <fstream>
+#include <stdlib.h>//system("CLS")
 
 #include "CMonster.h"
 
@@ -97,7 +98,7 @@ void saveGame(){
 
 void openMonster(){
     std::fstream AbreArchivo;
-    AbreArchivo.open("valores.txt", std::ios::in);
+    AbreArchivo.open("monsters.txt", std::ios::in);
     if (AbreArchivo.is_open())
     {
         string line;
@@ -108,7 +109,7 @@ void openMonster(){
         AbreArchivo.close();
     }else 
     {
-        cout << "You haven't made monster's yet. Please play the game to creat monsters." << endl;
+        cout << "You haven't made monster's yet. Please play the game to create monsters." << endl;
     }
     main();
 }
