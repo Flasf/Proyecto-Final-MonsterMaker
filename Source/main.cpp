@@ -42,9 +42,11 @@ void loading();
 void seeMonsterInfo();
 void playMinigame();
 
+bool notMonsterFound;
+
 int main()
 {
-    system("CLS");
+    if (notMonsterFound == true){system("CLS");}
     
     char choice = 0;
     cout << "Write a number\n";
@@ -111,6 +113,7 @@ void openMonster(){
     }else 
     {
         cout << "You haven't made monster's yet. Please play the game to create monsters." << endl;
+        notMonsterFound = true;
         system("PAUSE");
     }
     main();
