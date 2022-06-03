@@ -22,6 +22,7 @@ The game should have somewhere:
 #include <Windows.h> //delay
 #include <string>
 #include <sstream>
+#include <fstream>
 
 #include "CMonster.h"
 
@@ -51,7 +52,7 @@ int main()
     Sleep(1000);
     cout << iRandomNumber << endl;
 
-    int choice = 0;
+    char choice = 0;
     cout << "Write a number\n";
     cin >> choice;
     cout << choice << endl;
@@ -63,16 +64,16 @@ int main()
         cout << "Select a number \n\t1. Play\n\t2. Save Game\n\t3. Exit" << endl;
         cin >> choice;
 
-        if (choice == 1)
+        if (choice == '1')
             play();
-        else if (choice == 2)
+        else if (choice == '2')
             saveGame();
-        else if (choice == 3)
+        else if (choice == '3')
             cout << "Bye Bye" << endl;
         else
             cout << "Please choose again" << endl;
 
-    } while (choice != 3);
+    } while (choice != '3');
     return 0;
 }
 
@@ -83,8 +84,12 @@ void play()
 }
 
 void saveGame(){
-//file stuff
-    exit(0);
+
+    std::ifstream objAbreArchivo("valores.txt");
+    if (objAbreArchivo.is_open()){
+        //pedir valores lo tengo y son los atributos de los obj
+    }
+        exit(0);
 }
 
 void openMonster(){
@@ -173,12 +178,43 @@ void createMonster(){
     Sleep(1000);
     cout << "Would you like to combine your monsters? (choose a number)\n\t1. Yes \n\t2. No" << endl;
     cin >> choice;
-    if (choice == 1) {
-        char choice2;
-        cout << "Would you like to save the game before combining?\n\t1. Yes \n\t2. No" << endl;
+    if (choice == 1) 
+        {
+            char choice2;
+            do
+            {
+                cout << "Would you like to save the game before combining?\n\t1. Yes \n\t2. No" << endl;
+                cin >> choice2;
+            } while (choice2 != '1');
 
-        if(choice2 == 1){
-            saveGame();
+            if(choice2 == 1)
+            {
+                //saveGame();
+                std::ifstream objAbreArchivo("monsters.txt");
+                if (objAbreArchivo.is_open())
+                {
+                    objAbreArchivo.close();
+                    // pedir valores lo tengo y son los atributos de los obj
+                }
+                //Guardar valores de los monstruos en el archivo
+                std::ofstream file;
+                file.open("monsters.txt");
+                if (file.is_open())
+                {
+                    file << "First monster atributes are: " << endl;
+                    file << "Name: " << monster1.getName() << endl;
+                    file << "Age: " << monster1.getAge() << endl;
+                    file << "Health: " << monster1.getHealth() << endl;
+                    file << "Size: " << monster1.getSize() << endl << endl;
+                    file << "Second monster atributes are: " << endl;
+                    file << "Name: " << monster2.getName() << endl;
+                    file << "Age: " << monster2.getAge() << endl;
+                    file << "Health: " << monster2.getHealth() << endl;
+                    file << "Size: " << monster2.getSize() << endl << endl;
+                }
+                file.close();
+            }
+            
         }else{
             /* using string = basic_string<char>; */
             /* cout << "Combining monsters..." << endl;
@@ -190,10 +226,11 @@ void createMonster(){
             cout << CombinedMonster.getHealth() << endl;
             cout << CombinedMonster.getName() << endl; */
             }
-    }else if (choice == 2) {
+            
+    }/* if else (choice == 2) {
         cout<< "ok then" << endl;
-    }
-    }
+    } */
+    
 
 void combineMonster(){
     exit(0);
