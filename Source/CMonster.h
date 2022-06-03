@@ -38,13 +38,13 @@ public:
     }
     friend CMonster<T, C, E, F> operator+(const CMonster<T, C, E, F> &leftMonster, const CMonster<T, C, E, F> &rightMonster)
     {
-        CMonster result;
-        result = leftMonster.Name + rightMonster.Name;
-        result = leftMonster.Age + rightMonster.Age;
-        result = leftMonster.Health + rightMonster.Health;
-        result = leftMonster.Size + rightMonster.Size;
+        CMonster<string, int, int, double> combinedResult(string name, int health, int age, double size);
+        combinedResult = leftMonster.Name + rightMonster.Name;
+        combinedResult = leftMonster.Age + rightMonster.Age;
+        combinedResult = leftMonster.Health + rightMonster.Health;
+        combinedResult = leftMonster.Size + rightMonster.Size;
 
-        return result;
+        return combinedResult;
     }
     // CMonster operator+(/*const CMonster<T,C,E,F> &leftMonster, */const CMonster<T,C,E,F> &rightMonster)
     // {
