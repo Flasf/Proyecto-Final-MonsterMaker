@@ -182,17 +182,13 @@ void createMonster(){
         }else{
             cout << "Combining monsters..." << endl;
             CMonster<string, int, int, double> operator+(const CMonster<string, int, int, double> &leftMonster, const CMonster<string, int, int, double> &rightMonster);
-            // {
-            //     CMonster Result;
-            //     result = leftMonster.Name + rightMonster.Name;
-            //     result = leftMonster.Age + rightMonster.Age;
-            //     result = leftMonster.Health + rightMonster.Health;
-            //     result = leftMonster.Size + rightMonster.Size;
-
-            //     return result;
-            // }
-            
-        }
+            CMonster<string, int, int, double> CombinedMonster;
+            CombinedMonster = monster1 + monster2;
+            cout << CombinedMonster.getName() << endl;
+            cout << CombinedMonster.getAge() << endl;
+            cout << CombinedMonster.getHealth() << endl;
+            cout << CombinedMonster.getName() << endl;
+            }
     }else if (choice == 2) {
         cout<< "ok then" << endl;
     }
