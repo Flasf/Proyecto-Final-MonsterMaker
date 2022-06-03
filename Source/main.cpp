@@ -201,79 +201,73 @@ void createMonster(){
 
     cout << "Would you like to combine your monsters? (choose a number)\n\t1. Yes \n\t2. No, just save the game" << endl;
     cin >> choice;
-    if (choice == '1') 
+    if (choice == '1')
+    {
+
+        // saveGame();
+        std::ifstream objAbreArchivo("monsters.txt");
+        if (objAbreArchivo.is_open())
         {
-            char choice2;
-            do
-            {
-                cout << "Would you like to save the game before combining?\n\t1. Yes \n\t2. No" << endl;
-                cin >> choice2;
+            objAbreArchivo.close();
+            // pedir valores lo tengo y son los atributos de los obj
+        }
+        // Guardar valores de los monstruos en el archivo
+        std::ofstream file;
+        file.open("monsters.txt", std::ios::out);
+        if (file.is_open())
+        {
+            file << "First monster atributes are: " << endl;
+            file << "Name: " << monster1.getName() << endl;
+            file << "Age: " << monster1.getAge() << endl;
+            file << "Health: " << monster1.getHealth() << endl;
+            file << "Size: " << monster1.getSize() << endl
+                 << endl;
+            file << "Second monster atributes are: " << endl;
+            file << "Name: " << monster2.getName() << endl;
+            file << "Age: " << monster2.getAge() << endl;
+            file << "Health: " << monster2.getHealth() << endl;
+            file << "Size: " << monster2.getSize() << endl
+                 << endl;
+            /* file << "Combined monster atributes are: " << endl;
+            file << "Name: " << CombinedMonster.getName() << endl;
+            file << "Age: " << CombinedMonster.getAge() << endl;
+            file << "Health: " << CombinedMonster.getHealth() << endl;
+            file << "Size: " << CombinedMonster.getSize() << endl << endl; */
+            //! if operator overload worked
+            file.close();
+        }
+    }
+    else
+    {
+        std::ofstream file;
+        file.open("monsters.txt", std::ios::out);
+        if (file.is_open())
+        {
+            file << "First monster atributes are: " << endl;
+            file << "Name: " << monster1.getName() << endl;
+            file << "Age: " << monster1.getAge() << endl;
+            file << "Health: " << monster1.getHealth() << endl;
+            file << "Size: " << monster1.getSize() << endl
+                 << endl;
+            file << "Second monster atributes are: " << endl;
+            file << "Name: " << monster2.getName() << endl;
+            file << "Age: " << monster2.getAge() << endl;
+            file << "Health: " << monster2.getHealth() << endl;
+            file << "Size: " << monster2.getSize() << endl
+                 << endl;
+            file.close();
+        }
+        /* using string = basic_string<char>; */
+        /* cout << "Combining monsters..." << endl;
+        CMonster<string, int, int, double> operator+(const CMonster<string, int, int, double> &leftMonster, const CMonster<string, int, int, double> &rightMonster);
+        CMonster<string, int, int, double> CombinedMonster;
+        CMonster<string, int, int, double> CombinedMonster = monster1 + monster2;
+        cout << CombinedMonster.getName() << endl;
+        cout << CombinedMonster.getAge() << endl;
+        cout << CombinedMonster.getHealth() << endl;
+        cout << CombinedMonster.getName() << endl; */
+    }
 
-            } while (choice2 != '1');
-
-            if(choice2 == '1')
-            {
-                //saveGame();
-                std::ifstream objAbreArchivo("monsters.txt");
-                if (objAbreArchivo.is_open())
-                {
-                    objAbreArchivo.close();
-                    // pedir valores lo tengo y son los atributos de los obj
-                }
-                //Guardar valores de los monstruos en el archivo
-                std::ofstream file;
-                file.open("monsters.txt", std::ios::out);
-                if (file.is_open())
-                {
-                    file << "First monster atributes are: " << endl;
-                    file << "Name: " << monster1.getName() << endl;
-                    file << "Age: " << monster1.getAge() << endl;
-                    file << "Health: " << monster1.getHealth() << endl;
-                    file << "Size: " << monster1.getSize() << endl << endl;
-                    file << "Second monster atributes are: " << endl;
-                    file << "Name: " << monster2.getName() << endl;
-                    file << "Age: " << monster2.getAge() << endl;
-                    file << "Health: " << monster2.getHealth() << endl;
-                    file << "Size: " << monster2.getSize() << endl << endl;
-                    /* file << "Combined monster atributes are: " << endl;
-                    file << "Name: " << CombinedMonster.getName() << endl;
-                    file << "Age: " << CombinedMonster.getAge() << endl;
-                    file << "Health: " << CombinedMonster.getHealth() << endl;
-                    file << "Size: " << CombinedMonster.getSize() << endl << endl; */ //!if operator overload worked
-                    file.close();
-                }
-                
-            }
-            
-        }else{
-            std::ofstream file;
-            file.open("monsters.txt", std::ios::out);
-            if (file.is_open())
-            {
-                file << "First monster atributes are: " << endl;
-                file << "Name: " << monster1.getName() << endl;
-                file << "Age: " << monster1.getAge() << endl;
-                file << "Health: " << monster1.getHealth() << endl;
-                file << "Size: " << monster1.getSize() << endl
-                     << endl;
-                file << "Second monster atributes are: " << endl;
-                file << "Name: " << monster2.getName() << endl;
-                file << "Age: " << monster2.getAge() << endl;
-                file << "Health: " << monster2.getHealth() << endl;
-                file << "Size: " << monster2.getSize() << endl<< endl;
-                file.close();
-            }
-            /* using string = basic_string<char>; */
-            /* cout << "Combining monsters..." << endl;
-            CMonster<string, int, int, double> operator+(const CMonster<string, int, int, double> &leftMonster, const CMonster<string, int, int, double> &rightMonster);
-            CMonster<string, int, int, double> CombinedMonster;
-            CMonster<string, int, int, double> CombinedMonster = monster1 + monster2; 
-            cout << CombinedMonster.getName() << endl;
-            cout << CombinedMonster.getAge() << endl;
-            cout << CombinedMonster.getHealth() << endl;
-            cout << CombinedMonster.getName() << endl; */
-            }
-            
     }/* if else (choice == 2) {
         cout<< "ok then" << endl;
     } */
