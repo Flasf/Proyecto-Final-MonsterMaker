@@ -48,7 +48,7 @@ public:
 
         return combinedResult;
     } */
-    CMonster<T, C, E, F> operator+(const CMonster<T, C, E, F> &rightMonster)
+    /* CMonster<T, C, E, F> operator+(const CMonster<T, C, E, F> &rightMonster)
     {
         CMonster<string, int, int, double> combinedResult;
         combinedResult.Name = this->Name + rightMonster.Name;
@@ -57,7 +57,7 @@ public:
         combinedResult.Size = this->Size + rightMonster.Size;
 
         return combinedResult;
-    }
+    } */
     // CMonster operator+(/*const CMonster<T,C,E,F> &leftMonster, */const CMonster<T,C,E,F> &rightMonster)
     // {
     //     CMonster Result;
