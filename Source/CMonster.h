@@ -2,6 +2,8 @@
 #ifndef CMONSTER_H
 #define CMONSTER_H
 #include <iostream>
+
+using std::string;
 template <class T, class C, class E, class F>
 
 class CMonster{
@@ -36,16 +38,26 @@ public:
     ~CMonster(){
         std::cout << "Monster has been destroyed." << std::endl;
     }
-    friend CMonster<T, C, E, F> operator+(const CMonster<T, C, E, F> &leftMonster, const CMonster<T, C, E, F> &rightMonster)
+    /* friend CMonster<T, C, E, F> operator+(const CMonster<T, C, E, F> &leftMonster, const CMonster<T, C, E, F> &rightMonster)
     {
-        CMonster result;
-        result = leftMonster.Name + rightMonster.Name;
-        result = leftMonster.Age + rightMonster.Age;
-        result = leftMonster.Health + rightMonster.Health;
-        result = leftMonster.Size + rightMonster.Size;
+        CMonster<string, int, int, double> combinedResult;
+        combinedResult.Name = leftMonster.Name + rightMonster.Name;
+        combinedResult.Age = leftMonster.Age + rightMonster.Age;
+        combinedResult.Health = leftMonster.Health + rightMonster.Health;
+        combinedResult.Size = leftMonster.Size + rightMonster.Size;
 
-        return result;
-    }
+        return combinedResult;
+    } */
+    /* CMonster<T, C, E, F> operator+(const CMonster<T, C, E, F> &rightMonster)
+    {
+        CMonster<string, int, int, double> combinedResult;
+        combinedResult.Name = this->Name + rightMonster.Name;
+        combinedResult.Age = this->Age + rightMonster.Age;
+        combinedResult.Health = this->Health + rightMonster.Health;
+        combinedResult.Size = this->Size + rightMonster.Size;
+
+        return combinedResult;
+    } */
     // CMonster operator+(/*const CMonster<T,C,E,F> &leftMonster, */const CMonster<T,C,E,F> &rightMonster)
     // {
     //     CMonster Result;
