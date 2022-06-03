@@ -178,7 +178,7 @@ void createMonster(){
     Sleep(1000);
     cout << "Would you like to combine your monsters? (choose a number)\n\t1. Yes \n\t2. No" << endl;
     cin >> choice;
-    if (choice == 1) 
+    if (choice == '1') 
         {
             char choice2;
             do
@@ -187,7 +187,7 @@ void createMonster(){
                 cin >> choice2;
             } while (choice2 != '1');
 
-            if(choice2 == 1)
+            if(choice2 == '1')
             {
                 //saveGame();
                 std::ifstream objAbreArchivo("monsters.txt");
@@ -198,7 +198,7 @@ void createMonster(){
                 }
                 //Guardar valores de los monstruos en el archivo
                 std::ofstream file;
-                file.open("monsters.txt");
+                file.open("monsters.txt", std::ios::out);
                 if (file.is_open())
                 {
                     file << "First monster atributes are: " << endl;
@@ -211,8 +211,9 @@ void createMonster(){
                     file << "Age: " << monster2.getAge() << endl;
                     file << "Health: " << monster2.getHealth() << endl;
                     file << "Size: " << monster2.getSize() << endl << endl;
+                    file.close();
                 }
-                file.close();
+                
             }
             
         }else{
