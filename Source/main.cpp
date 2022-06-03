@@ -52,7 +52,6 @@ int main()
     cout << "Write a number\n";
     cin >> choice;
     cout << choice << endl;
-    CMonster<string, int, int, double> monsterDePrueba("none", 1, 1, 1);
     //menu
     do
     {
