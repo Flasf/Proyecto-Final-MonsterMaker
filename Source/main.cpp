@@ -202,15 +202,7 @@ void createMonster(){
     cin >> choice;
     if (choice == '1')
     {
-
-        // saveGame();
-        std::ifstream objAbreArchivo("monsters.txt");
-        if (objAbreArchivo.is_open())
-        {
-            objAbreArchivo.close();
-            // pedir valores lo tengo y son los atributos de los obj
-        }
-        // Guardar valores de los monstruos en el archivo
+        // save monsters values to a file
         std::ofstream file;
         file.open("monsters.txt", std::ios::out);
         if (file.is_open())
@@ -236,7 +228,7 @@ void createMonster(){
             file.close();
         }
     }
-    else
+    else//if decided to not combine
     {
         std::ofstream file;
         file.open("monsters.txt", std::ios::out);
@@ -267,9 +259,7 @@ void createMonster(){
         cout << CombinedMonster.getName() << endl; */
     }
 
-    }/* if else (choice == 2) {
-        cout<< "ok then" << endl;
-    } */
+    }
     
 void playMinigame(){
     system("CLS");
