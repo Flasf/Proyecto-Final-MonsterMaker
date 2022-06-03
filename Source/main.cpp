@@ -23,7 +23,7 @@ The game should have somewhere:
 #include <string>
 #include <sstream>
 #include <fstream>
-#include <stdlib.h>//system("CLS")
+#include <stdlib.h>//system("CLS"), system("PAUSE")
 
 #include "CMonster.h"
 
@@ -40,19 +40,12 @@ void createMonster();
 void combineMonster();
 void loading();
 void seeMonsterInfo();
+void playMinigame();
 
 int main()
 {
-    srand((unsigned)time(NULL));
-    int iRandomNumber = rand()%100+1;
-    cout << iRandomNumber << " ";
-    //cout.flush();
-    Sleep(1000);
-    cout << iRandomNumber << " ";
-    //cout.flush();
-    Sleep(1000);
-    cout << iRandomNumber << endl;
-
+    system("CLS");
+    
     char choice = 0;
     cout << "Write a number\n";
     cin >> choice;
@@ -62,11 +55,13 @@ int main()
     do
     {
 
-        cout << "Select a number" 
-             <<"\n\t1. Play" 
-             <<"\n\t2. Show Monsters created"
-             <<"\n\t3. Exit" << endl;
-        cin >> choice;
+        cout << "Select a number"
+             << "\n\t1. Play"
+             << "\n\t2. Show Monsters created"
+             << "\n\t3. Exit"
+             << "\n\t4. Minigame" << endl;
+
+        cin >>choice;
 
         if (choice == '1')
             play();
@@ -74,6 +69,8 @@ int main()
             openMonster();
         else if (choice == '3')
             cout << "Bye Bye" << endl;
+        else if (choice == '4')
+            playMinigame();
         else
             cout << "Please choose again" << endl;
 
@@ -83,7 +80,7 @@ int main()
 
 void play()
 {
-    cout << "You're playing" << endl<<endl;
+    cout << "\nYou're playing" << endl<<endl;
     createMonster();
 }
 
@@ -97,6 +94,10 @@ void saveGame(){
 }
 
 void openMonster(){
+
+    system("CLS");
+    cout << "Here are your monsters: " << endl;
+
     std::fstream AbreArchivo;
     AbreArchivo.open("monsters.txt", std::ios::in);
     if (AbreArchivo.is_open())
@@ -110,6 +111,7 @@ void openMonster(){
     }else 
     {
         cout << "You haven't made monster's yet. Please play the game to create monsters." << endl;
+        system("PAUSE");
     }
     main();
 }
@@ -132,7 +134,7 @@ void createMonster(){
 
     timesCreateMonsterHasBeenUsed = 0;
 
-    cout << "You can create 2 monsters, how would you like to name the first one?: ";
+    cout << "\nYou can create 2 monsters, how would you like to name the first one?: ";
     
     cin.ignore(); //If not, getline doesn't wait for input
     cin.clear();
@@ -164,7 +166,9 @@ void createMonster(){
     monster1.setSize(monstersSize);
 
     cout<< monster1.getName() << endl;
-    
+
+    Sleep(1000);
+
     cout << "You can create 2 monsters, how would you like to name the second one?: ";
     cin.ignore(); // If not, getline doesn't wait for input
     cin.clear();
@@ -186,6 +190,7 @@ void createMonster(){
 
     loading();
     Sleep(1000);
+
     cout << "Second Monster created!" << endl;
     monster2.setHealth(monstersHealth);
     monster2.setName(monstersName);
@@ -194,7 +199,8 @@ void createMonster(){
 
     cout << monster2.getName() << endl;
     Sleep(1000);
-    cout << "Would you like to combine your monsters? (choose a number)\n\t1. Yes \n\t2. No" << endl;
+
+    cout << "Would you like to combine your monsters? (choose a number)\n\t1. Yes \n\t2. No, just save the game" << endl;
     cin >> choice;
     if (choice == '1') 
         {
@@ -229,13 +235,34 @@ void createMonster(){
                     file << "Age: " << monster2.getAge() << endl;
                     file << "Health: " << monster2.getHealth() << endl;
                     file << "Size: " << monster2.getSize() << endl << endl;
+                    /* file << "Combined monster atributes are: " << endl;
+                    file << "Name: " << CombinedMonster.getName() << endl;
+                    file << "Age: " << CombinedMonster.getAge() << endl;
+                    file << "Health: " << CombinedMonster.getHealth() << endl;
+                    file << "Size: " << CombinedMonster.getSize() << endl << endl; */ //!if operator overload worked
                     file.close();
                 }
                 
             }
             
         }else{
-            cout << "Are you sure you don't want to?" << endl;
+            std::ofstream file;
+            file.open("monsters.txt", std::ios::out);
+            if (file.is_open())
+            {
+                file << "First monster atributes are: " << endl;
+                file << "Name: " << monster1.getName() << endl;
+                file << "Age: " << monster1.getAge() << endl;
+                file << "Health: " << monster1.getHealth() << endl;
+                file << "Size: " << monster1.getSize() << endl
+                     << endl;
+                file << "Second monster atributes are: " << endl;
+                file << "Name: " << monster2.getName() << endl;
+                file << "Age: " << monster2.getAge() << endl;
+                file << "Health: " << monster2.getHealth() << endl;
+                file << "Size: " << monster2.getSize() << endl<< endl;
+                file.close();
+            }
             /* using string = basic_string<char>; */
             /* cout << "Combining monsters..." << endl;
             CMonster<string, int, int, double> operator+(const CMonster<string, int, int, double> &leftMonster, const CMonster<string, int, int, double> &rightMonster);
@@ -258,6 +285,43 @@ void combineMonster(){
 
     //     return left.
     // }
+}
+void playMinigame(){
+    system("CLS");
+    cout << "Let's see how lucky you are..." << endl;
+    Sleep(1000);
+
+    srand((unsigned)time(NULL));//set seed to random number
+    int iRandomNumber = rand() % 100 + 1;
+    cout << iRandomNumber << " ";
+    int iNum1 = iRandomNumber;
+    // cout.flush();
+    Sleep(1000);
+    iRandomNumber = rand() % 100 + 1;
+    cout << iRandomNumber << " ";
+    int iNum2 = iRandomNumber;
+    // cout.flush();
+    Sleep(1000);
+    iRandomNumber = rand() % 100 + 1;
+    cout << iRandomNumber << endl;
+    int iNum3 = iRandomNumber;
+
+    if(iNum1 == iNum2 && iNum1 == iNum3)
+        cout << "You won $100,000,000" << endl;
+        
+    else if(iNum1 == iNum2 && iNum1 != iNum3)
+        cout << "You won $50" << endl;
+    else if(iNum1 == iNum3 && iNum1 != iNum2)
+        cout << "You won $50" << endl;
+
+    else if(iNum1 != iNum2 && iNum1 != iNum3)
+        cout << "You won $0" << endl;
+    else if (iNum2 != iNum1 && iNum2 != iNum3)
+        cout << "You won $0" << endl;
+    else if (iNum3 != iNum2 && iNum3 != iNum1)
+            cout << "You won $0" << endl;
+    system("PAUSE");
+    system("CLS");
 }
 void loading(){
     cout << "1 ";
