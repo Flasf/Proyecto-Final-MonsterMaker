@@ -119,10 +119,6 @@ void openMonster(){
     main();
 }
 
-void saveMonster(){/*call saveGame maybe*/}
-
-void seeMonsterInfo(){/*see monster's info*/}
-
 void createMonster(){
     string monstersName;
     int monstersAge;
@@ -212,6 +208,7 @@ void createMonster(){
             {
                 cout << "Would you like to save the game before combining?\n\t1. Yes \n\t2. No" << endl;
                 cin >> choice2;
+
             } while (choice2 != '1');
 
             if(choice2 == '1')
@@ -281,14 +278,6 @@ void createMonster(){
         cout<< "ok then" << endl;
     } */
     
-
-void combineMonster(){
-    exit(0);
-    // CMonster Operator+(const CMonster& left, const CMonster& right){
-
-    //     return left.
-    // }
-}
 void playMinigame(){
     system("CLS");
     cout << "Let's see how lucky you are..." << endl;
