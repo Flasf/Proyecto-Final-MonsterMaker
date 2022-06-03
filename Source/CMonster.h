@@ -36,7 +36,16 @@ public:
     ~CMonster(){
         std::cout << "Monster has been destroyed." << std::endl;
     }
-    friend CMonster<T, C, E, F> operator+(const CMonster<T, C, E, F> &leftMonster, const CMonster<T, C, E, F> &rightMonster);
+    friend CMonster<T, C, E, F> operator+(const CMonster<T, C, E, F> &leftMonster, const CMonster<T, C, E, F> &rightMonster)
+    {
+        CMonster result;
+        result = leftMonster.Name + rightMonster.Name;
+        result = leftMonster.Age + rightMonster.Age;
+        result = leftMonster.Health + rightMonster.Health;
+        result = leftMonster.Size + rightMonster.Size;
+
+        return result;
+    }
     // CMonster operator+(/*const CMonster<T,C,E,F> &leftMonster, */const CMonster<T,C,E,F> &rightMonster)
     // {
     //     CMonster Result;
