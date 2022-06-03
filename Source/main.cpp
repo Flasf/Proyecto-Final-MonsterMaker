@@ -33,13 +33,10 @@ using std::endl; using std::string;
 //int CMonster<C>::iMonsterCount = 0;
 
 void play();
-void saveGame();
 void createMonster();
 void openMonster();
 void createMonster();
-void combineMonster();
 void loading();
-void seeMonsterInfo();
 void playMinigame();
 
 bool notMonsterFound;
@@ -83,15 +80,6 @@ void play()
 {
     cout << "\nYou're playing" << endl<<endl;
     createMonster();
-}
-
-void saveGame(){
-
-    std::ifstream objAbreArchivo("valores.txt");
-    if (objAbreArchivo.is_open()){
-        //pedir valores lo tengo y son los atributos de los obj
-    }
-        exit(0);
 }
 
 void openMonster(){
