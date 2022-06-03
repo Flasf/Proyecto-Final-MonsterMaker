@@ -61,13 +61,16 @@ int main()
     do
     {
 
-        cout << "Select a number \n\t1. Play\n\t2. Save Game\n\t3. Exit" << endl;
+        cout << "Select a number" 
+             <<"\n\t1. Play" 
+             <<"\n\t2. Show Monsters created"
+             <<"\n\t3. Exit" << endl;
         cin >> choice;
 
         if (choice == '1')
             play();
         else if (choice == '2')
-            saveGame();
+            openMonster();
         else if (choice == '3')
             cout << "Bye Bye" << endl;
         else
@@ -93,7 +96,21 @@ void saveGame(){
 }
 
 void openMonster(){
-//you have these monsters: bla bla bla (names) selecte which one...
+    std::fstream AbreArchivo;
+    AbreArchivo.open("valores.txt", std::ios::in);
+    if (AbreArchivo.is_open())
+    {
+        string line;
+        while (getline(AbreArchivo, line))
+        {
+            cout << line << endl;
+        }
+        AbreArchivo.close();
+    }else 
+    {
+        cout << "You haven't made monster's yet. Please play the game to creat monsters." << endl;
+    }
+    main();
 }
 
 void saveMonster(){/*call saveGame maybe*/}
@@ -217,6 +234,7 @@ void createMonster(){
             }
             
         }else{
+            cout << "Are you sure you don't want to?" << endl;
             /* using string = basic_string<char>; */
             /* cout << "Combining monsters..." << endl;
             CMonster<string, int, int, double> operator+(const CMonster<string, int, int, double> &leftMonster, const CMonster<string, int, int, double> &rightMonster);

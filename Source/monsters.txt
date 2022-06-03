@@ -1,0 +1,12 @@
+First monster atributes are: 
+Name: HOLA MUNDO
+Age: 18
+Health: 700
+Size: 1.92
+
+Second monster atributes are: 
+Name: ADIOS MUNDO CRUEL
+Age: 99
+Health: 1
+Size: 24.3
+
